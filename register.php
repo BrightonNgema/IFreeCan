@@ -1,256 +1,185 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Free Snow Bootstrap Website Template | Register :: w3layouts</title>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<script src="js/jquery.min.js"></script>
-<script src="js/main.js"></script>
-<script type="text/javascript">
-        $(document).ready(function() {
-            $(".dropdown img.flag").addClass("flagvisibility");
+<?php
 
-            $(".dropdown dt a").click(function() {
-                $(".dropdown dd ul").toggle();
-            });
+include "db.php";
 
-            $(".dropdown dd ul li a").click(function() {
-                var text = $(this).html();
-                $(".dropdown dt a span").html(text);
-                $(".dropdown dd ul").hide();
-                $("#result").html("Selected value is: " + getSelectedValue("sample"));
-            });
+$f_name = $_POST["f_name"];
+$l_name = $_POST["l_name"];
+$email = $_POST['email'];
+$password = $_POST['password'];
+$repassword = $_POST['repassword'];
+$mobile = $_POST['mobile'];
+$address1 = $_POST['address1'];
+$address2 = $_POST['address2'];
+$name = "/^[A-Z][a-zA-Z ]+$/";
+$emailValidation = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9]+(\.[a-z]{2,4})$/";
+$number = "/^[0-9]+$/";
 
-            function getSelectedValue(id) {
-                return $("#" + id).find("dt a span.value").html();
-            }
-
-            $(document).bind('click', function(e) {
-                var $clicked = $(e.target);
-                if (! $clicked.parents().hasClass("dropdown"))
-                    $(".dropdown dd ul").hide();
-            });
-
-
-            $("#flagSwitcher").click(function() {
-                $(".dropdown img.flag").toggleClass("flagvisibility");
-            });
-        });
-     </script>
- </head>
-<body>
-	<div class="header">
-		<div class="container">
-			<div class="row">
-			  <div class="col-md-12">
-				 <div class="header-left">
-					 <div class="logo">
-						<a href="index.php"><img src="images/logo.png" alt=""/></a>
-					 </div>
-					 <div class="menu">
-						  <a class="toggleMenu" href="#"><img src="images/nav.png" alt="" /></a>
-						    <ul class="nav" id="nav">
-						    	<li><a href="shop.php">Shop</a></li>
-						    	<li><a href="team.html">Team</a></li>
-						    	<li><a href="experiance.php">Experiance</a></li>
-								<li><a href="contact.html">Contact</a></li>
-								<div class="clear"></div>
-							</ul>
-							<script type="text/javascript" src="js/responsive-nav.js"></script>
-				    </div>
-	    		    <div class="clear"></div>
-	    	    </div>
-	            <div class="header_right">
-	    		  <!-- start search-->
-				   <!-- <div class="search-box">
-							<div id="sb-search" class="sb-search">
-								<form>
-									<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-									<input class="sb-search-submit" type="submit" value="">
-									<span class="sb-icon-search"> </span>
-								</form>
-							</div>
-						</div> -->
-						<!----search-scripts---->
-						<!-- <script src="js/classie.js"></script>
-						<script src="js/uisearch.js"></script>
-						<script>
-							new UISearch( document.getElementById( 'sb-search' ) );
-						</script> -->
-				     <ul class="icon1 sub-icon1 profile_img">
-					 <li><a class="active-icon c1" href="#"> </a>
-						<ul class="sub-icon1 list">
-						  <div class="product_control_buttons">
-						  	<a href="#"><img src="images/edit.png" alt=""/></a>
-						  		<a href="#"><img src="images/close_edit.png" alt=""/></a>
-						  </div>
-						   <div class="clear"></div>
-						  <li class="list_img"><img src="images/1.jpg" alt=""/></li>
-						  <li class="list_desc"><h4><a href="#">velit esse molestie</a></h4><span class="actual">1 x
-                          $12.00</span></li>
-						  <div class="login_buttons">
-							 <div class="check_button"><a href="checkout.html">Check out</a></div>
-							 <div class="login_button"><a href="login.php">Login</a></div>
-							 <div class="clear"></div>
-						  </div>
-						  <div class="clear"></div>
-						</ul>
-					 </li>
-				   </ul>
-		        <div class="clear"></div>
-	       </div>
-	      </div>
-		 </div>
-	    </div>
-	  </div>
-     <div class="main">
-      <div class="shop_top">
-	     <div class="container">
-						<form method="post">
-              <fieldset class="input">
-              <h3 class="center">SignUp Page</h3>
-              <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8" id="signup_msg"></div>
-                <div class="col-md-2"></div>
-              </div>
-              <div class="divider"></div>
-
-								<div class="register-top-grid">
-										<h3>PERSONAL INFORMATION</h3>
-										<div>
-											<span>First Name<label>*</label></span>
-											<input type="text" id="f_name" name="f_name" placeholder="John">
-										</div>
-										<div>
-											<span>Last Name<label>*</label></span>
-											<input type="text" id="l_name" name="l_name">
-										</div>
-										<div>
-											<span>Email Address<label>*</label></span>
-											<input type="email" id="email" name="email">
-										</div>
-										<!-- <div class="clear"> </div> -->
-                    <div>
-                      <span>Mobile<label>*</label></span>
-                      <input type="tel" placeholder="+27 071 234 5678" id="mobile" name="mobile">
-                    </div>
-										<div class="clear"> </div>
-								</div>
-								<div class="clear"> </div>
-								<div class="register-bottom-grid">
-										<h3>LOGIN INFORMATION</h3>
-										<div>
-											<span>Password<label>*</label></span>
-											<input type="password"id="password" name="password">
-										</div>
-										<div>
-											<span>Confirm Password<label>*</label></span>
-											<input type="password" id="repassword" name="repassword">
-										</div>
-										<div class="clear"> </div>
-								</div>
-                <div class="clear"> </div>
-                <div class="register-bottom-grid">
-										<h3>ADDRESS INFORMATION</h3>
-										<div>
-											<span>Billing Address<label>*</label></span>
-											<input type="text" id="billing_address" name="billing_address">
-										</div>
-										<div>
-											<span>Shipping Address<label>*</label></span>
-											<input type="text" id="shipping_address" name="shipping_address">
-										</div>
-										<div class="clear"> </div>
-								</div>
-								<div class="clear"> </div>
-                <input style="float:left" type="submit" id="signup_button" name="signup_button"  value="Sign Up">
-
-								<!-- <input  type="button" id="signup_button" name="signup_button" class="btn btn-default btn-lg" value="Login"> -->
-              </fieldset>
-            </form>
-					</div>
-		   </div>
-	  </div>
-	  <div class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-            <ul class="footer_box">
-							<h4>Products</h4>
-              <!-- category Ajax script -->
-              <li><a href="shop.php">Mens</a></li>
-							<li><a href="shop.php">Womens</a></li>
-              <li><a href="shop.php">All Products</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>About</h4>
-							<li><a href="#">Careers and internships</a></li>
-							<li><a href="#">Sponserships</a></li>
-							<li><a href="#">team</a></li>
-							<li><a href="#">Catalog Request/Download</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Customer Support</h4>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Shipping and Order Tracking</a></li>
-							<li><a href="#">Easy Returns</a></li>
-							<li><a href="#">Warranty</a></li>
-							<li><a href="#">Replacement Binding Parts</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Newsletter</h4>
-							<div class="footer_search">
-				    		   <form>
-				    			<input type="text" value="Enter your email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email';}">
-				    			<input type="submit" value="Go">
-				    		   </form>
-					        </div>
-							<ul class="social">
-							  <li class="facebook"><a href="#"><span> </span></a></li>
-							  <li class="twitter"><a href="#"><span> </span></a></li>
-							  <li class="instagram"><a href="#"><span> </span></a></li>
-							  <li class="pinterest"><a href="#"><span> </span></a></li>
-							  <li class="youtube"><a href="#"><span> </span></a></li>
-						    </ul>
-		   				</ul>
-					</div>
-				</div>
-				<div class="row footer_bottom">
-				    <div class="copy">
-			           <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
-		            </div>
-					  <dl id="sample" class="dropdown">
-				        <dt><a href="#"><span>Change Region</span></a></dt>
-				        <dd>
-				            <ul>
-				                <li><a href="#">Australia<img class="flag" src="images/as.png" alt="" /><span class="value">AS</span></a></li>
-				                <li><a href="#">Sri Lanka<img class="flag" src="images/srl.png" alt="" /><span class="value">SL</span></a></li>
-				                <li><a href="#">Newziland<img class="flag" src="images/nz.png" alt="" /><span class="value">NZ</span></a></li>
-				                <li><a href="#">Pakistan<img class="flag" src="images/pk.png" alt="" /><span class="value">Pk</span></a></li>
-				                <li><a href="#">United Kingdom<img class="flag" src="images/uk.png" alt="" /><span class="value">UK</span></a></li>
-				                <li><a href="#">United States<img class="flag" src="images/us.png" alt="" /><span class="value">US</span></a></li>
-				            </ul>
-				         </dd>
-	   				  </dl>
-   				</div>
+if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empty($repassword) ||
+	empty($mobile) || empty($address1) || empty($address2)){
+		
+		echo "
+			<div class='alert alert-warning'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>PLease Fill all fields..!</b>
 			</div>
-		</div>
-</body>
-</html>
+		";
+		exit();
+	} else {
+		if(!preg_match($name,$f_name)){
+		echo "
+			<div class='alert alert-warning'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<b>this $f_name is not valid..!</b>
+			</div>
+		";
+		exit();
+	}
+	if(!preg_match($name,$l_name)){
+		echo "
+			<div class='alert alert-warning'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<b>this $l_name is not valid..!</b>
+			</div>
+		";
+		exit();
+	}
+	if(!preg_match($emailValidation,$email)){
+		echo "
+			<div class='alert alert-warning'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<b>this $email is not valid..!</b>
+			</div>
+		";
+		exit();
+	}
+	if(strlen($password) < 9 ){
+		echo "
+			<div class='alert alert-warning'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<b>Password is weak</b>
+			</div>
+		";
+		exit();
+	}
+	if(strlen($repassword) < 9 ){
+		echo "
+			<div class='alert alert-warning'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<b>Password is weak</b>
+			</div>
+		";
+		exit();
+	}
+	if($password != $repassword){
+		echo "
+			<div class='alert alert-warning'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<b>password is not same</b>
+			</div>
+		";
+	}
+	if(!preg_match($number,$mobile)){
+		echo "
+			<div class='alert alert-warning'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<b>Mobile number $mobile is not valid</b>
+			</div>
+		";
+		exit();
+	}
+	if(!(strlen($mobile) == 10)){
+		echo "
+			<div class='alert alert-warning'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<b>Mobile number must be 10 digit</b>
+			</div>
+		";
+		exit();
+	}
+	//existing email address in our database
+	$sql = "SELECT user_id FROM user_info WHERE email = '$email' LIMIT 1" ;
+	$check_query = mysqli_query($con,$sql);
+	$count_email = mysqli_num_rows($check_query);
+	if($count_email > 0){
+		echo "
+			<div class='alert alert-danger'>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<b>Email Address is already available Try Another email address</b>
+			</div>
+		";
+		exit();
+	} else {
+		$password = md5($password);
+		$sql = "INSERT INTO `user_info` 
+		(`user_id`, `first_name`, `last_name`, `email`, 
+		`password`, `mobile`, `address1`, `address2`) 
+		VALUES (NULL, '$f_name', '$l_name', '$email', 
+		'$password', '$mobile', '$address1', '$address2')";
+		$run_query = mysqli_query($con,$sql);
+		if($run_query){
+			echo "
+				<div class='alert alert-success'>
+					<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+				<b>You are Registered successfully..!</b>
+				</div>
+			";
+		}
+	}
+	}
+	
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

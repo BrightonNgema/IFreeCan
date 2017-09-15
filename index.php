@@ -1,327 +1,349 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE HTML>
+<?php
+session_start();
+ ?>
+<!DOCTYPE html>
 <html>
-<head>
-<title>Free Snow Bootstrap Website Template | Home :: w3layouts</title>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<script src="js/jquery.min.js"></script>
-<script src="js/main.js"></script>
-<!--<script src="js/jquery.easydropdown.js"></script>-->
-<!--start slider -->
-<link rel="stylesheet" href="css/fwslider.css" media="all">
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/fwslider.js"></script>
-<!--end slider -->
-<script type="text/javascript">
-        $(document).ready(function() {
-            $(".dropdown img.flag").addClass("flagvisibility");
+	<head>
+		<meta charset="UTF-8">
+		<title>IFreeCan </title>
+		<link rel="stylesheet" href="css/font-awesome.min.css"/>
 
-            $(".dropdown dt a").click(function() {
-                $(".dropdown dd ul").toggle();
-            });
-
-            function getSelectedValue(id) {
-                return $("#" + id).find("dt a span.value").html();
-            }
-
-            $(document).bind('click', function(e) {
-                var $clicked = $(e.target);
-                if (! $clicked.parents().hasClass("dropdown"))
-                    $(".dropdown dd ul").hide();
-            });
-
-
-            $("#flagSwitcher").click(function() {
-                $(".dropdown img.flag").toggleClass("flagvisibility");
-            });
-        });
-     </script>
-</head>
+		<link rel="stylesheet" href="css/bootstrap.css"/>
+		<link rel="stylesheet" href="css/carousel.css"/>
+		<link rel="stylesheet" href="css/footer.css"/>
+		<script src="js/jquery2.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="main.js"></script>
+		<style>
+			@media screen and (max-width:480px){
+				#search{width:65%;}
+				#search_btn{width:30%;float:right;margin-top:-34px;margin-right:35px;}
+			}
+		</style>
+	</head>
 <body>
-	<div class="header">
-		<div class="container">
-			<div class="row">
-			  <div class="col-md-12">
-				 <div class="header-left">
-					 <div class="logo">
-						<a href="index.php"><img src="images/logo.png" alt=""/></a>
-					 </div>
-					 <div class="menu">
-						  <a class="toggleMenu" href="#"><img src="images/nav.png" alt="" /></a>
-						    <ul class="nav" id="nav">
-						    	<li><a href="shop.php">Shop</a></li>
-						    	<li><a href="team.html">Team</a></li>
-						    	<li><a href="experiance.php">Experiance</a></li>
-								<li><a href="contact.html">Contact</a></li>
-								<div class="clear"></div>
-							</ul>
-							<script type="text/javascript" src="js/responsive-nav.js"></script>
-				    </div>
-	    		    <div class="clear"></div>
-	    	    </div>
-	            <div class="header_right">
-	    		  <!-- start search-->
-				      <div class="search-box">
-							<div id="sb-search" class="sb-search">
-								<form>
-									<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-									<input class="sb-search-submit" type="submit" value="">
-									<span class="sb-icon-search"> </span>
-								</form>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+					<span class="sr-only">navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="index.php" class="navbar-brand">IFreeCan </a>
+			</div>
+		<div class="collapse navbar-collapse" id="collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="#myCarousel" scroll><span class="glyphicon glyphicon-home"></span> Home</a></li>
+				<li><a href="#about"><span class="glyphicon glyphicon-time"></span> About Us</a></li>
+				<li><a href="#services"><span class="glyphicon glyphicon-user"></span> Services</a></li>
+				<li><a href="#products"><span class="glyphicon glyphicon-phone"></span> Products</a></li>
+				<!-- <li style="width:300px;left:10px;top:10px;"><input type="text" class="form-control" id="search"></li>
+				<li style="top:10px;left:20px;"><button class="btn btn-primary" id="search_btn">Search</button></li> -->
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge">0</span></a>
+				</li>
+				<?php if (isset($_SESSION["uid"])){
+				echo"
+				<li class=dropdown>
+								<a href=# class=dropdown-toggle data-toggle=dropdown role=button aria-haspopup=true aria-expanded=false>"; ?><?php echo "Welcome,".$_SESSION['name']; ?> <?php echo "<span class=caret></span></a>
+								<ul class=dropdown-menu>
+									<li><a href=>Edit Profile</a></li>
+									<li role=separator class=divider></li>
+									<li><a href=logout.php>Logout</a></li>
+
+								</ul>
+							</li>
+				";
+			}else{
+					echo "
+				<li><a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='glyphicon glyphicon-user'></span>SignIn</a>
+					<ul class='dropdown-menu'>
+						<div style='width:300px;'>
+							<div class='panel-body'>
+								<div class='panel-heading'>Login</div>
+								<div class='panel-heading'>
+									<label for='email'>Email</label>
+									<input type='email' class='form-control' id='email' required/>
+									<label for='email'>Password</label>
+									<input type='password' class='form-control' id='password' required/>
+									<p><br/></p>
+									<a href='#' style='color:black; list-style:none;'>Forgotten Password</a><input type='submit' class='btn btn-primary' style='float:right;' id='login' value='Login'>
+								</div>
+								<br/>
 							</div>
 						</div>
-						<!----search-scripts---->
-						<script src="js/classie.js"></script>
-						<script src="js/uisearch.js"></script>
-						<script>
-							new UISearch( document.getElementById( 'sb-search' ) );
-						</script>
-						<!----//search-scripts---->
-				    <ul class="icon1 sub-icon1 profile_img">
-					 <li><a class="active-icon c1" href="#"> </a>
-						<ul class="sub-icon1 list">
-						  <div class="product_control_buttons">
-						  	<a href="#"><img src="images/edit.png" alt=""/></a>
-						  		<a href="#"><img src="images/close_edit.png" alt=""/></a>
-						  </div>
-						   <div class="clear"></div>
-						  <li class="list_img"><img src="images/1.jpg" alt=""/></li>
-						  <li class="list_desc"><h4><a href="#">velit esse molestie</a></h4><span class="actual">1 x
-                          $12.00</span></li>
-						  <div class="login_buttons">
-							 <div class="check_button"><a href="checkout.html">Check out</a></div>
-							 <div class="login_button"><a href="login.php">Login</a></div>
-							 <div class="clear"></div>
-						  </div>
-						  <div class="clear"></div>
-						</ul>
-					 </li>
-				   </ul>
+					</ul>
+				</li>
+				<li><a href='customer_registration.php'><span class='glyphicon glyphicon-user'></span>SignUp</a></li>
 
-		           <div class="clear"></div>
-	       </div>
-	      </div>
-		 </div>
-	    </div>
-	</div>
-	<div class="banner">
-	<!-- start slider -->
-       <div id="fwslider">
-         <div class="slider_container">
-            <div class="slide">
-                <!-- Slide image -->
-               <img src="images/slider1.jpg" class="img-responsive" alt=""/>
-                <!-- /Slide image -->
-                <!-- Texts container -->
-                <div class="slide_content">
-                    <div class="slide_content_wrap">
-                        <!-- Text title -->
-                        <h1 class="title">Run Over<br>Everything</h1>
-                        <!-- /Text title -->
-                        <div class="button"><a href="#">See Details</a></div>
-                    </div>
-                </div>
-               <!-- /Texts container -->
-            </div>
-            <!-- /Duplicate to create more slides -->
-            <div class="slide">
-               <img src="images/slider2.jpg" class="img-responsive" alt=""/>
-                <div class="slide_content">
-                    <div class="slide_content_wrap">
-                        <h1 class="title">Run Over<br>Everything</h1>
-                       	<div class="button"><a href="#">See Details</a></div>
-                    </div>
-                </div>
-            </div>
-            <!--/slide -->
-        </div>
-        <div class="timers"></div>
-        <div class="slidePrev"><span></span></div>
-        <div class="slideNext"><span></span></div>
-       </div>
-       <!--/slider -->
-      </div>
-	  <div class="main">
-		<div class="content-top">
-			<h2>snowboards</h2>
-			<p>hendrerit in vulputate velit esse molestie consequat, vel illum dolore</p>
-			<div class="close_but"><i class="close1"> </i></div>
-				<ul id="flexiselDemo3">
-				<li><img src="images/board1.jpg" /></li>
-				<li><img src="images/board2.jpg" /></li>
-				<li><img src="images/board3.jpg" /></li>
-				<li><img src="images/board4.jpg" /></li>
-				<li><img src="images/board5.jpg" /></li>
-			</ul>
-		<h3>SnowBoard Extreme Series</h3>
-			<script type="text/javascript">
-		$(window).load(function() {
-			$("#flexiselDemo3").flexisel({
-				visibleItems: 5,
-				animationSpeed: 1000,
-				autoPlay: true,
-				autoPlaySpeed: 3000,
-				pauseOnHover: true,
-				enableResponsiveBreakpoints: true,
-		    	responsiveBreakpoints: {
-		    		portrait: {
-		    			changePoint:480,
-		    			visibleItems: 1
-		    		},
-		    		landscape: {
-		    			changePoint:640,
-		    			visibleItems: 2
-		    		},
-		    		tablet: {
-		    			changePoint:768,
-		    			visibleItems: 3
-		    		}
-		    	}
-		    });
+				";
 
-		});
-		</script>
-		<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+			}
+			?>
+</ul>
 		</div>
 	</div>
-	<div class="content-bottom">
-		<div class="container">
-			<div class="row content_bottom-text">
-			  <div class="col-md-7">
-				<h3>The Mountains<br>Snowboarding</h3>
-				<p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.</p>
-				<p class="m_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.</p>
-			  </div>
+</div>
+
+<section>
+	<!-- Carousel
+	================================================== -->
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1" class=""></li>
+			<li data-target="#myCarousel" data-slide-to="2" class=""></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item next left">
+				<img class="first-slide" src="images/watch.jpg" alt="First slide">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>Free Shipping</h1>
+						<p>We deliver Free Nation Wide no hidden Cost.</p>
+						<?php
+							if (isset($_SESSION["uid"])) {
+								echo "
+								<p><a class='btn btn-lg btn-primary' href='store.php' role='button'>Explore Products</a></p>
+
+								";
+							}else{
+
+								echo "
+								<p><a class='btn btn-lg btn-primary' href='customer_registration.php' role='button'>Sign up today</a></p>
+								";
+							}
+						?>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<img class="second-slide" src="images/gadgets.jpg" alt="Second slide">
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>IFREECAN Time Piece</h1>
+						<p>100% South Africa Brand Watches. 100% African!. 100% Black Owned</p>
+            <?php
+              if (isset($_SESSION["uid"])) {
+                echo "
+                <p><a class='btn btn-lg btn-primary' href='store.php' role='button'>Enter Store</a></p>
+
+                ";
+              }else{
+
+                echo "
+                <p><a class='btn btn-lg btn-primary' href='customer_registration.php' role='button'>Sign up today</a></p>
+                ";
+              }
+            ?>
+					</div>
+				</div>
+			</div>
+			<div class="item active left">
+				<img class="third-slide" src="images/coffee.jpg" alt="Third slide">
+				<div class="container">
+					<div class="carousel-caption">
+            <?php
+							if (isset($_SESSION["uid"])) {
+								echo "
+                <h1>What Time is it ".$_SESSION['name']."?</h1>
+    						<p>Its IFREECAN Time!!! Still resisting? </p>
+								<p><a class='btn btn-lg btn-primary' href='store.php' role='button'>Explore Products</a></p>
+
+								";
+							}else{
+
+								echo "
+                <h1>Its IFREECAN Time</h1>
+    						<p>We sell our watches at reasonable prices. Still resisting? </p>
+								<p><a class='btn btn-lg btn-primary' href='customer_registration.php' role='button'>Sign up today</a></p>
+								";
+							}
+						?>
+
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="features">
-		<div class="container">
-			<h3 class="m_3">Features</h3>
-			<div class="close_but"><i class="close1"> </i></div>
-			  <div class="row">
-				<div class="col-md-3 top_box">
-				  <div class="view view-ninth"><a href="single.html">
-                    <img src="images/pic1.jpg" class="img-responsive" alt=""/>
-                    <div class="mask mask-1"> </div>
-                    <div class="mask mask-2"> </div>
-                      <div class="content">
-                        <h2>Hover Style #9</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
-                      </div>
-                   </a> </div
-                  </div>
-                  <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                  <p class="m_5">claritatem insitam</p>
-                </div>
-                <div class="col-md-3 top_box">
-					<div class="view view-ninth"><a href="single.html">
-                    <img src="images/pic2.jpg" class="img-responsive" alt=""/>
-                    <div class="mask mask-1"> </div>
-                    <div class="mask mask-2"> </div>
-                      <div class="content">
-                        <h2>Hover Style #9</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
-                      </div>
-                    </a> </div>
-                   <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                   <p class="m_5">claritatem insitam</p>
-				</div>
-				<div class="col-md-3 top_box">
-					<div class="view view-ninth"><a href="single.html">
-                    <img src="images/pic3.jpg" class="img-responsive" alt=""/>
-                    <div class="mask mask-1"> </div>
-                    <div class="mask mask-2"> </div>
-                      <div class="content">
-                        <h2>Hover Style #9</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
-                      </div>
-                    </a> </div>
-                   <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                   <p class="m_5">claritatem insitam</p>
-				</div>
-				<div class="col-md-3 top_box1">
-					<div class="view view-ninth"><a href="single.html">
-                    <img src="images/pic4.jpg" class="img-responsive" alt=""/>
-                    <div class="mask mask-1"> </div>
-                    <div class="mask mask-2"> </div>
-                      <div class="content">
-                        <h2>Hover Style #9</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
-                      </div>
-                     </a> </div>
-                   <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                   <p class="m_5">claritatem insitam</p>
+		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div><!-- /.carousel -->
+
+</section>
+
+<!-- About Us-->
+	<section id="about" class="container services"style="padding-bottom:0px;">
+		<div class="spliter"></div>
+		<div class="divider"></div>
+					<div class="row">
+							<div class="col-lg-12 text-center">
+								<h2 class="section-heading">About Us</h2>
+							</div>
+					</div>
+					<br/>
+						<div class="row text-center">
+							<div class="service-box col-md-12">
+								<p>Ifreecan Timepiece handcraft’s watches using an
+ancient art and science.<br/> It’s widely inspired by
+nature and Africa. <br/> IMore over the name Ifreecan
+means if the Eye is free we can achieve greater
+heights as Africans.</p>
+								<br/>
+								<a href="#"><button class="btn btn-primary btn-lg"type="button" name="button"><span class="glyphicon glyphicon-download"></span> Download Pdf</button></a>
+							</div>
+						</div>
+						<div class="divider"></div>
+
+
+	</section>
+
+	<hr class="line_breaker"/>
+
+	<!-- Services-->
+
+		<section id="services" class="container services"style="padding-bottom:0px;">
+				<div class="spliter"></div>
+						<div class="row">
+								<div class="col-lg-12 text-center">
+									<h2 class="section-heading">SERVICES</h2>
+								</div>
+						</div>
+						<br/>
+							<div class="row text-center">
+								<div class="service col-md-4">
+									<span class="glyphicon-stack"  style="font-size:50px">
+									<i class="glyphicon glyphicon-circle glyphicon-stack-2x"></i>
+									<i class="glyphicon glyphicon-time glyphicon-stack glyphicon-stack-1x" style="color:white"></i>
+									</span>
+									<h4>Watches</h4>
+									<div class="divider"></div>
+									<p>yada ydyaydyyaydadyadyadaydyydydy<br/> a yydyay dayd adyadyadyay yad</p>
+									<div class="divider"></div>
+								</div>
+								<div class="service col-md-4">
+									<span class="glyphicon-stack"  style="font-size:50px">
+									<i class="glyphicon glyphicon-circle glyphicon-stack-2x"></i>
+									<i class="glyphicon glyphicon-road glyphicon-stack glyphicon-stack-1x" style="color:white"></i>
+									</span>
+									<h4>Free Shipping</h4>
+									<div class="divider"></div>
+									<p>yada ydyaydyyaydadyadyadaydyydydy a yydyay dayd adyadyadyay yad</p>
+									<div class="divider"></div>
+								</div>
+								<div class="service col-md-4">
+									<span class="glyphicon-stack"  style="font-size:50px">
+									<i class="glyphicon glyphicon-circle glyphicon-stack-2x"></i>
+									<i class="glyphicon glyphicon-phone glyphicon-stack glyphicon-stack-1x" style="color:white"></i>
+									</span>
+									<h4>Phone Covers</h4>
+									<div class="divider"></div>
+									<p>yada ydyaydyyaydadyadyadaydyydydy a yydyay dayd adyadyadyay yad</p>
+									<div class="divider"></div>
+								</div>
+							</div>
+		</section>
+		<hr class="line_breaker"/>
+
+
+	<section id="products" class="container">
+		<div class="spliter"></div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+
+					</div>
+					<div >
+						<div class="panel-heading text-center">
+							<h2>OUR PRODUCTS</h2>
+							<p class="header_paragraph"><i>"Please ensure you log in to explore our shop"</i></p>
+						</div>
+						<div class="text-center panel-body">
+							<div class="col-md-12 col-xs-12" id="product_msg">
+							</div>
+							<div id="get_display_product">
+								<!--Here we get product jquery Ajax Request-->
+							</div>
+							<a href="store.php"><button class="btn btn-primary btn-lg"type="button" name="button"> Enter Store &nbsp; &nbsp;<span class="glyphicon glyphicon-arrow-right"></span></button></a>
+
+						</div>
+					</div>
 				</div>
 			</div>
-		 </div>
-	    </div>
-		<div class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Products</h4>
-							<li><a href="#">Mens</a></li>
-							<li><a href="#">Womens</a></li>
+	</section>
+	<div class="spliter"></div>
+	<footer class="footer-distributed">
 
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>About</h4>
-							<li><a href="#">Careers and internships</a></li>
-							<li><a href="#">Sponserships</a></li>
-							<li><a href="#">team</a></li>
-							<li><a href="#">Catalog Request/Download</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Customer Support</h4>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Shipping and Order Tracking</a></li>
-							<li><a href="#">Easy Returns</a></li>
-							<li><a href="#">Warranty</a></li>
-							<li><a href="#">Replacement Binding Parts</a></li>
-						</ul>
-					</div>
-					<div class="col-md-3">
-						<ul class="footer_box">
-							<h4>Newsletter</h4>
-							<div class="footer_search">
-				    		   <form>
-				    			<input type="text" value="Enter your email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email';}">
-				    			<input type="submit" value="Go">
-				    		   </form>
-					        </div>
-							<ul class="social">
-							  <li class="facebook"><a href="#"><span> </span></a></li>
-							  <li class="twitter"><a href="#"><span> </span></a></li>
-							  <li class="instagram"><a href="#"><span> </span></a></li>
-							  <li class="pinterest"><a href="#"><span> </span></a></li>
-							  <li class="youtube"><a href="#"><span> </span></a></li>
-						    </ul>
+		<div class="footer-left">
 
-						</ul>
-					</div>
-				</div>
-				<div class="row footer_bottom">
-				    <div class="copy">
-			           <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
-               </div>
-   				</div>
-			</div>
+			<h3>Company<span>logo</span></h3>
+
+			<p class="footer-links">
+				<a href="index.php">Home</a>
+				·
+				<a href="#about">About Us</a>
+				·
+				<a href="#services">Services</a>
+				·
+				<a href="#products">Products</a>
+
+				·
+				<a href="store.php">Store</a>
+			</p>
+
+			<p class="footer-company-name">IFREECAN &copy; 2015</p>
+			<br/>
+			<p class="footer-company-name">Developed & Designed by <a href="#">Brighton Ngema</a>&copy; 2015</p>
 		</div>
+
+		<div class="footer-center">
+
+			<div>
+				<i class="glyphicon glyphicon-map-marker"></i>
+				<p><span>21 June Street</span> Gauteng, South Africa</p>
+			</div>
+
+			<div>
+				<i class="glyphicon glyphicon-phone"></i>
+				<p>+1 555 123456</p>
+			</div>
+
+			<div>
+				<i class="glyphicon glyphicon-envelope"></i>
+				<p><a href="mailto:brighton@Ifreecan.com">support@ifreecan.com</a></p>
+			</div>
+
+		</div>
+
+		<div class="footer-right">
+
+			<p class="footer-company-about">
+				<span>About the company</span>
+				Ifreecan Timepiece handcraft’s watches using an
+ancient art and science.It’s widely inspired by
+nature and Africa.
+			</p>
+
+			<div class="footer-icons">
+
+				<a href="#"><i class="glyphicon glyphicon-facebook"></i></a>
+				<a href="#"><i class="glyphicon glyphicon-twitter"></i></a>
+				<a href="#"><i class="glyphicon glyphicon-linkedin"></i></a>
+				<a href="#"><i class="glyphicon glyphicon-github"></i></a>
+
+			</div>
+
+		</div>
+
+	</footer>
 </body>
 </html>
