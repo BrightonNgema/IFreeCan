@@ -99,7 +99,7 @@ session_start();
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			<div class="item next left">
-				<img class="first-slide" src="images/watch.jpg" alt="First slide">
+				<img class="first-slide" src="images/blue.jpg" alt="First slide">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>Free Shipping</h1>
@@ -121,7 +121,7 @@ session_start();
 				</div>
 			</div>
 			<div class="item">
-				<img class="second-slide" src="images/gadgets.jpg" alt="Second slide">
+				<img class="second-slide" src="images/brown.jpg" alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>IFREECAN Time Piece</h1>
@@ -143,7 +143,7 @@ session_start();
 				</div>
 			</div>
 			<div class="item active left">
-				<img class="third-slide" src="images/coffee.jpg" alt="Third slide">
+				<img class="third-slide" src="images/black.jpg" alt="Third slide">
 				<div class="container">
 					<div class="carousel-caption">
             <?php
