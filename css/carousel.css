@@ -13,6 +13,24 @@ body {
   border:1px solid #888;
 }
 
+.glyphicon-heart{
+  color:  #337ab7;
+  font-size:15px;
+  cursor: pointer;
+}
+
+.glyphicon-heart:hover{
+  color:  red;
+  font-size:15px;
+  cursor: pointer;
+}
+
+.red{
+  color:red;
+}
+.blue{
+  color: #337ab7;
+}
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 

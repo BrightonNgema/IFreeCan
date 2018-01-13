@@ -13,7 +13,7 @@ session_start();
 		<link rel="stylesheet" href="css/footer.css"/>
 		<script src="js/jquery2.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="main.js"></script>
+		<script src="js/main.js"></script>
 		<style>
 			@media screen and (max-width:480px){
 				#search{width:65%;}
@@ -35,15 +35,30 @@ session_start();
 			</div>
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="#myCarousel" scroll><span class="glyphicon glyphicon-home"></span> Home</a></li>
-				<li><a href="#about"><span class="glyphicon glyphicon-time"></span> About Us</a></li>
-				<li><a href="#services"><span class="glyphicon glyphicon-user"></span> Services</a></li>
-				<li><a href="#products"><span class="glyphicon glyphicon-phone"></span> Products</a></li>
+        <li class=dropdown>
+								<a href="index.php" class=dropdown-toggle data-toggle=dropdown role=button aria-haspopup=true aria-expanded=false><span class="glyphicon glyphicon-home"></span>Home</a>
+								<ul class=dropdown-menu>
+                  <li><a href="#about"><span class="glyphicon glyphicon-time"></span> About Us</a></li>
+                  <li role=separator class=divider></li>
+          				<li><a href="#services"><span class="glyphicon glyphicon-user"></span> Services</a></li>
+                  <li role=separator class=divider></li>
+          				<li><a href="#products"><span class="glyphicon glyphicon-phone"></span> Products</a></li>
+									<li role=separator class=divider></li>
+								</ul>
+				</li>
+        <?php if (isset($_SESSION["uid"])){
+				echo"
+        <li><a href='store.php'><span class='glyphicon glyphicon-time'></span> Store</a></li>
+        ";
+      }else{
+
+      }
+      ?>
 				<!-- <li style="width:300px;left:10px;top:10px;"><input type="text" class="form-control" id="search"></li>
 				<li style="top:10px;left:20px;"><button class="btn btn-primary" id="search_btn">Search</button></li> -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge">0</span></a>
+				<li><a href="cart.php"><span class="glyphicon glyphicon-heart"></span> Wishlist <span class="badge">0</span></a>
 				</li>
 				<?php if (isset($_SESSION["uid"])){
 				echo"
@@ -52,32 +67,16 @@ session_start();
 								<ul class=dropdown-menu>
 									<li><a href=>Edit Profile</a></li>
 									<li role=separator class=divider></li>
-									<li><a href=logout.php>Logout</a></li>
+									<li><a href='php/logout.php'>Logout</a></li>
 
 								</ul>
 							</li>
 				";
 			}else{
 					echo "
-				<li><a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='glyphicon glyphicon-user'></span>SignIn</a>
-					<ul class='dropdown-menu'>
-						<div style='width:300px;'>
-							<div class='panel-body'>
-								<div class='panel-heading'>Login</div>
-								<div class='panel-heading'>
-									<label for='email'>Email</label>
-									<input type='email' class='form-control' id='email' required/>
-									<label for='email'>Password</label>
-									<input type='password' class='form-control' id='password' required/>
-									<p><br/></p>
-									<a href='#' style='color:black; list-style:none;'>Forgotten Password</a><input type='submit' class='btn btn-primary' style='float:right;' id='login' value='Login'>
-								</div>
-								<br/>
-							</div>
-						</div>
-					</ul>
+				<li><a href='signin.php'><span class='glyphicon glyphicon-user'></span>SignIn</a>
 				</li>
-				<li><a href='customer_registration.php'><span class='glyphicon glyphicon-user'></span>SignUp</a></li>
+				<li><a href='signup.php'><span class='glyphicon glyphicon-user'></span>SignUp</a></li>
 
 				";
 
@@ -114,7 +113,7 @@ session_start();
 							}else{
 
 								echo "
-								<p><a class='btn btn-lg btn-primary' href='customer_registration.php' role='button'>Sign up today</a></p>
+								<p><a class='btn btn-lg btn-primary' href='signup.php' role='button'>Sign up today</a></p>
 								";
 							}
 						?>
@@ -136,7 +135,7 @@ session_start();
               }else{
 
                 echo "
-                <p><a class='btn btn-lg btn-primary' href='customer_registration.php' role='button'>Sign up today</a></p>
+                <p><a class='btn btn-lg btn-primary' href='signup.php' role='button'>Sign up today</a></p>
                 ";
               }
             ?>
@@ -160,7 +159,7 @@ session_start();
 								echo "
                 <h1>Its IFREECAN Time</h1>
     						<p>We sell our watches at reasonable prices. Still resisting? </p>
-								<p><a class='btn btn-lg btn-primary' href='customer_registration.php' role='button'>Sign up today</a></p>
+								<p><a class='btn btn-lg btn-primary' href='signup.php' role='button'>Sign up today</a></p>
 								";
 							}
 						?>
@@ -265,7 +264,19 @@ heights as Africans.</p>
 					<div >
 						<div class="panel-heading text-center">
 							<h2>OUR PRODUCTS</h2>
-							<p class="header_paragraph"><i>"Please ensure you log in to explore our shop"</i></p>
+              <?php
+  							if (isset($_SESSION["uid"])) {
+  								echo "
+                  <p class='header_paragraph'><i class='blue'>To place an order please Call us</i></p>
+
+  								";
+  							}else{
+
+  								echo "
+                  <p class='header_paragraph'><i class='blue'>Please ensure you log in to add to your wishlist</i></p>
+  								";
+  							}
+  						?>
 						</div>
 						<div class="text-center panel-body">
 							<div class="col-md-12 col-xs-12" id="product_msg">

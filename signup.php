@@ -14,7 +14,7 @@ if(isset($_SESSION["uid"])){
 		<link rel="stylesheet" href="css/footer.css"/>
 		<script src="js/jquery2.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="main.js"></script>
+		<script src="js/main.js"></script>
 		<style>
 				.divider{
 					margin-bottom: 20px;
@@ -57,7 +57,7 @@ if(isset($_SESSION["uid"])){
 									<li role=separator class=divider></li>
 									<li><a href=>Edit Profile</a></li>
 									<li role=separator class=divider></li>
-									<li><a href=logout.php>Logout</a></li>
+									<li><a href=php/logout.php>Logout</a></li>
 									<li role=separator class=divider></li>
 								</ul>
 							</li>
@@ -82,7 +82,7 @@ if(isset($_SESSION["uid"])){
 						</div>
 					</ul>
 				</li>
-				<li><a href='customer_registration.php'><span class='glyphicon glyphicon-user'></span>SignUp</a></li>
+				<li><a href='signup.php'><span class='glyphicon glyphicon-user'></span>SignUp</a></li>
 
 				";
 

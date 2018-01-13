@@ -14,8 +14,10 @@ if(isset($_POST["userLogin"])){
 		$_SESSION["uid"] = $row["user_id"];
 		$_SESSION["name"] = $row["first_name"];
 			echo "truefsvkjbskvvsbd";
+		}else{
+			echo "Email/Password incorrect";
 		}
-	
+
 }
 
 ?>

@@ -15,7 +15,7 @@ if(!isset($_SESSION["uid"])){
 		<link rel="stylesheet" href="css/footer.css"/>
 		<script src="js/jquery2.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="main.js"></script>
+		<script src="js/main.js"></script>
 		<style>
 			@media screen and (max-width:480px){
 				#search{width:80%;}
@@ -51,17 +51,17 @@ if(!isset($_SESSION["uid"])){
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-				<li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span> All Products</a></li>
+				<li><a href="store.php"><span class="glyphicon glyphicon-modal-window"></span> All Products</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge">0</span></a>
+				<li><a href="cart.php"><span class="glyphicon glyphicon-heart"></span> Wishlist <span class="badge">0</span></a>
 				</li>
 				<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo "Welcome,".$_SESSION["name"]; ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="">Edit Profile</a></li>
 									<li role="separator" class="divider"></li>
-									<li><a href="logout.php">Logout</a></li>
+									<li><a href="php/logout.php">Logout</a></li>
 								</ul>
 							</li>
 			</ul>
