@@ -12,9 +12,17 @@ if(isset($_SESSION["uid"])){
 		<title>IFreeCan </title>
 		<link rel="stylesheet" href="css/bootstrap.css"/>
 		<link rel="stylesheet" href="css/footer.css"/>
-		<script src="js/jquery2.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/main.js"></script>
+		<link rel="stylesheet" href="css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="css/bootstrap.css"/>
+		<link rel="stylesheet" href="css/forms.css"/>
+
+
+
+
+				<script src="js/aclocation.js"></script>
+				<script src="js/jquery2.js"></script>
+				<script src="js/bootstrap.min.js"></script>
+				<script src="js/main.js"></script>
 		<style>
 				.divider{
 					margin-bottom: 20px;
@@ -38,158 +46,59 @@ if(isset($_SESSION["uid"])){
 			</div>
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="#myCarousel" scroll><span class="glyphicon glyphicon-home"></span> Home</a></li>
-				<li><a href="#about"><span class="glyphicon glyphicon-time"></span> About Us</a></li>
-				<li><a href="#services"><span class="glyphicon glyphicon-user"></span> Services</a></li>
-				<li><a href="#products"><span class="glyphicon glyphicon-phone"></span> Products</a></li>
-				<!-- <li style="width:300px;left:10px;top:10px;"><input type="text" class="form-control" id="search"></li>
-				<li style="top:10px;left:20px;"><button class="btn btn-primary" id="search_btn">Search</button></li> -->
+				<li><a href="index.php" scroll><span class="glyphicon glyphicon-home"></span> Home</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"></span> Cart <span class="badge">0</span></a>
+				<li><a href="cart.php"><span class="glyphicon glyphicon-heart"></span> Wishlist <span class="badge">0</span></a>
 				</li>
-				<?php if (isset($_SESSION["uid"])){
-				echo"
-				<li class=dropdown>
-								<a href=# class=dropdown-toggle data-toggle=dropdown role=button aria-haspopup=true aria-expanded=false>"; ?><?php echo "Welcome,".$_SESSION['name']; ?> <?php echo "<span class=caret></span></a>
-								<ul class=dropdown-menu>
-									<li><a href=cart.php> Cart</a></li>
-									<li role=separator class=divider></li>
-									<li><a href=>Edit Profile</a></li>
-									<li role=separator class=divider></li>
-									<li><a href=php/logout.php>Logout</a></li>
-									<li role=separator class=divider></li>
-								</ul>
-							</li>
-				";
-			}else{
-					echo "
-				<li><a href='#' class='dropdown-toggle' data-toggle='dropdown'><span class='glyphicon glyphicon-user'></span>SignIn</a>
-					<ul class='dropdown-menu'>
-						<div style='width:300px;'>
-							<div class='panel-body'>
-								<div class='panel-heading'>Login</div>
-								<div class='panel-heading'>
-									<label for='email'>Email</label>
-									<input type='email' class='form-control' id='email' required/>
-									<label for='email'>Password</label>
-									<input type='password' class='form-control' id='password' required/>
-									<p><br/></p>
-									<a href='#' style='color:black; list-style:none;'>Forgotten Password</a><input type='submit' class='btn btn-primary' style='float:right;' id='login' value='Login'>
-								</div>
-								<div class='panel-footer' id='e_msg'></div>
-							</div>
-						</div>
-					</ul>
+				<li><a href='signin.php'><span class='glyphicon glyphicon-user'></span>SignIn</a>
 				</li>
 				<li><a href='signup.php'><span class='glyphicon glyphicon-user'></span>SignUp</a></li>
 
-				";
-
-			}
-			?>
 </ul>
 		</div>
 	</div>
 </div>
+<div id="map"></div>
 	<p><br/></p>
 	<p><br/></p>
-	<p><br/></p>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8" id="signup_msg">
-				<!--Alert from signup form-->
-			</div>
-			<div class="col-md-2"></div>
-		</div>
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
-				<div class="panel panel-primary">
-					<div class="panel-heading text-center"><h3>SIGNUP FORM</h3></div>
-					<div class="divider"></div>
-					<div class="panel-body">
+	<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-md-4 col-md-offset-4">
+							<br/><br/>
+						<h1 class="text-center login-title">Welcome to IFREECAN</h1>
+						<div class="account-wall">
+								<img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+										alt="">
+									<form class="form-signin">
+										<input type="text" id="f_name" placeholder="John" name="f_name" class="form-control">
+										<input type="text" id="l_name" placeholder="Doe" name="l_name" class="form-control">
+										<input type="text" id="email" placeholder="johndoe@gmail.com" name="email" class="form-control">
+										<br/>
+										<input type="password" id="password" placeholder="*********" name="password" class="form-control">
+										<input type="password" id="repassword" placeholder="Repeat password" name="repassword" class="form-control">
+										<br/>
+										<input type="text" id="mobile" placeholder="0712345678" name="mobile"class="form-control">
+										<input type="text" id="address1" placeholder="Physical Address" name="address1"class="form-control ad">
+										<input type="text" id="address2" placeholder="Postal Address" name="address2"class="form-control ad">
 
-					<form method="post">
-						<div class="row">
-							<div class="col-md-6">
-								<label for="f_name">First Name</label>
-								<input type="text" id="f_name" placeholder="John" name="f_name" class="form-control">
-							</div>
-							<div class="col-md-6">
 
-								<label for="f_name">Last Name</label>
-								<input type="text" id="l_name" placeholder="Doe" name="l_name"class="form-control">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="email">Email</label>
-								<input type="text" id="email" placeholder="johndoe@gmail.com" name="email"class="form-control">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="password">password</label>
-								<input type="password" id="password" placeholder="*********" name="password"class="form-control">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="repassword">Re-enter Password</label>
-								<input type="password" id="repassword" placeholder="*********" name="repassword"class="form-control">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="mobile">Mobile</label>
-								<input type="text" id="mobile" placeholder="0712345678" name="mobile"class="form-control">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="address1">Address Line 1</label>
-								<input type="text" id="address1" placeholder="21 June Street Tembisa" name="address1"class="form-control">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="address2">Address Line 2</label>
-								<input type="text" id="address2" placeholder="21 June Street Tembisa" name="address2"class="form-control">
-							</div>
-						</div>
-						<p><br/></p>
-						<div class="row">
-							<div class="col-lg-6">
-								<a href="" style="float:right;">Already a Member?</a>
-							</div>
-							<div class="col-lg-6">
-								<input style="float:left;" value="Sign Up" type="button" id="signup_button" name="signup_button"class="btn btn-primary">
-							</div>
-						</div>
+												<div id="signup_msg"></div>
+												<br/>
+										<button class="btn btn-lg btn-primary btn-block" type="submit" id="signup_button">
+												Sign Up</button>
+												<a href="signin.php" class="text-center new-account" style="text-decoration:none">
 
-					</div>
-					</form>
-				</div>
-				<!-- <form class="" m>
-				<div class="panel panel-primary">
-					<div class="panel-heading text-center"><h3>SIGNIN FORM</h3></div>
-					<div class="divider"></div>
-					<div class="panel-body">
-					<label for='email'>Email</label>
-					<input type='email' class='form-control' id='email' required/>
-					<label for='email'>Password</label>
-					<input type='password' class='form-control' id='password' required/>
-					<p><br/></p>
-					<input type='submit' class='btn btn-primary' style='float:right;' id='login' value='Login'>
+													Already a member?
+										</a>
+										</label>
+										<!-- <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span> -->
+									 </</form>
+						</div>
 				</div>
 			</div>
-		</form> -->
-			</div>
-
 		</div>
-	</div>
+
 	<footer class="footer-distributed">
 
 		<div class="footer-left">
@@ -211,7 +120,7 @@ if(isset($_SESSION["uid"])){
 
 			<p class="footer-company-name">IFREECAN &copy; 2015</p>
 			<br/>
-			<p class="footer-company-name">Developed & Designed by <a href="#">Brighton Ngema</a>&copy; 2015</p>
+			<p class="footer-company-name">Developed & Designed by <a href="http://brightonngema.co.za" target="_blank">Brighton Ngema</a>&copy; 2015</p>
 		</div>
 
 		<div class="footer-center">
@@ -255,4 +164,6 @@ nature and Africa.
 
 	</footer>
 </body>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDllGgwsZEywCilrFEDgM_c8SlwvoYlc1c&libraries=places&callback=initMap"
+		async defer></script>
 </html>

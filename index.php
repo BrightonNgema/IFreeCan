@@ -36,7 +36,7 @@ session_start();
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
         <li class=dropdown>
-								<a href="index.php" class=dropdown-toggle data-toggle=dropdown role=button aria-haspopup=true aria-expanded=false><span class="glyphicon glyphicon-home"></span>Home</a>
+								<a href="index.php" class=dropdown-toggle data-toggle=dropdown role=button aria-haspopup=true aria-expanded=false><span class="glyphicon glyphicon-home"></span> Home</a>
 								<ul class=dropdown-menu>
                   <li><a href="#about"><span class="glyphicon glyphicon-time"></span> About Us</a></li>
                   <li role=separator class=divider></li>
@@ -210,7 +210,8 @@ heights as Africans.</p>
 
 	<!-- Services-->
 
-		<section id="services" class="container services"style="padding-bottom:0px;">
+		<section id="services" class="services">
+      <div class="container">
 				<div class="spliter"></div>
 						<div class="row">
 								<div class="col-lg-12 text-center">
@@ -250,6 +251,7 @@ heights as Africans.</p>
 									<div class="divider"></div>
 								</div>
 							</div>
+                    </div>
 		</section>
 		<hr class="line_breaker"/>
 
@@ -313,7 +315,7 @@ heights as Africans.</p>
 
 			<p class="footer-company-name">IFREECAN &copy; 2015</p>
 			<br/>
-			<p class="footer-company-name">Developed & Designed by <a href="#">Brighton Ngema</a>&copy; 2015</p>
+			<p class="footer-company-name">Developed & Designed by <a href="http://brightonngema.co.za" target="_blank">Brighton Ngema</a>&copy; 2015</p>
 		</div>
 
 		<div class="footer-center">

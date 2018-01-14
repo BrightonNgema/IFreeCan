@@ -16,10 +16,10 @@ $number = "/^[0-9]+$/";
 
 if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empty($repassword) ||
 	empty($mobile) || empty($address1) || empty($address2)){
-		
+
 		echo "
 			<div class='alert alert-warning'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>PLease Fill all fields..!</b>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>All fields must be filled in.</b>
 			</div>
 		";
 		exit();
@@ -109,10 +109,10 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		exit();
 	} else {
 		$password = md5($password);
-		$sql = "INSERT INTO `user_info` 
-		(`user_id`, `first_name`, `last_name`, `email`, 
-		`password`, `mobile`, `address1`, `address2`) 
-		VALUES (NULL, '$f_name', '$l_name', '$email', 
+		$sql = "INSERT INTO `user_info`
+		(`user_id`, `first_name`, `last_name`, `email`,
+		`password`, `mobile`, `address1`, `address2`)
+		VALUES (NULL, '$f_name', '$l_name', '$email',
 		'$password', '$mobile', '$address1', '$address2')";
 		$run_query = mysqli_query($con,$sql);
 		if($run_query){
@@ -125,61 +125,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		}
 	}
 	}
-	
+
 
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

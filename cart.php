@@ -27,7 +27,7 @@ if(!isset($_SESSION["uid"])){
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="#" class="navbar-brand">IFreeCan </a>
+				<a href="index.php" class="navbar-brand">IFreeCan </a>
 			</div>
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
@@ -125,7 +125,7 @@ if(!isset($_SESSION["uid"])){
 
 				<p class="footer-company-name">IFREECAN &copy; 2015</p>
 				<br/>
-				<p class="footer-company-name">Developed & Designed by <a href="#">Brighton Ngema</a>&copy; 2015</p>
+				<p class="footer-company-name">Developed & Designed by <a href="http://brightonngema.co.za" target="_blank">Brighton Ngema</a>&copy; 2015</p>
 			</div>
 
 			<div class="footer-center">

@@ -1,8 +1,12 @@
+body{
+  background-image: url("../images/blue.jpg");
+}
 .form-signin
 {
-  max-width: 330px;
+  max-width: 430px;
   padding: 15px;
   margin: 0 auto;
+  width: 100%;
 }
 .form-signin .form-signin-heading, .form-signin .checkbox
 {
@@ -34,7 +38,7 @@
 }
 .form-signin input[type="password"]
 {
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
@@ -49,7 +53,7 @@
 }
 .login-title
 {
-  color: #555;
+  color: #fff;
   font-size: 18px;
   font-weight: 400;
   display: block;

@@ -1,9 +1,7 @@
 <?php
 
 session_start();
-if(!isset($_SESSION["uid"])){
-	header("location:index.php");
-}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +44,7 @@ if(!isset($_SESSION["uid"])){
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="#" class="navbar-brand">IFreeCan </a>
+				<a href="index.php" class="navbar-brand">IFreeCan </a>
 			</div>
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav">
@@ -56,14 +54,28 @@ if(!isset($_SESSION["uid"])){
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="cart.php"><span class="glyphicon glyphicon-heart"></span> Wishlist <span class="badge">0</span></a>
 				</li>
-				<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo "Welcome,".$_SESSION["name"]; ?> <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="">Edit Profile</a></li>
-									<li role="separator" class="divider"></li>
-									<li><a href="php/logout.php">Logout</a></li>
+				<?php if (isset($_SESSION["uid"])){
+				echo"
+				<li class=dropdown>
+								<a href=# class=dropdown-toggle data-toggle=dropdown role=button aria-haspopup=true aria-expanded=false>"; ?><?php echo "Welcome,".$_SESSION['name']; ?> <?php echo "<span class=caret></span></a>
+								<ul class=dropdown-menu>
+									<li><a href=>Edit Profile</a></li>
+									<li role=separator class=divider></li>
+									<li><a href='php/logout.php'>Logout</a></li>
+
 								</ul>
 							</li>
+				";
+			}else{
+					echo "
+				<li><a href='signin.php'><span class='glyphicon glyphicon-user'></span>SignIn</a>
+				</li>
+				<li><a href='signup.php'><span class='glyphicon glyphicon-user'></span>SignUp</a></li>
+
+				";
+
+			}
+			?>
 			</ul>
 		</div>
 	</div>
@@ -81,7 +93,7 @@ if(!isset($_SESSION["uid"])){
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="item next left">
-					<img class="first-slide" src="images/IMG_4961.JPG" alt="First slide">
+					<img class="first-slide" src="images/blue.jpg" alt="First slide">
 					<div class="container">
 						<div class="carousel-caption">
 							<h1>Free Shipping</h1>
@@ -91,7 +103,7 @@ if(!isset($_SESSION["uid"])){
 					</div>
 				</div>
 				<div class="item">
-					<img class="second-slide" src="images/watches.jpg" alt="Second slide">
+					<img class="second-slide" src="images/blue.jpg" alt="Second slide">
 					<div class="container">
 						<div class="carousel-caption">
 							<h1>IFREECAN Time Piece</h1>
@@ -101,7 +113,7 @@ if(!isset($_SESSION["uid"])){
 					</div>
 				</div>
 				<div class="item active left">
-					<img class="third-slide" src="images/watches1.jpg" alt="Third slide">
+					<img class="third-slide" src="images/blue.jpg" alt="Third slide">
 					<div class="container">
 						<div class="carousel-caption">
 							<h1>Its IFREECAN Time</h1>
@@ -211,7 +223,7 @@ if(!isset($_SESSION["uid"])){
 
 						<p class="footer-company-name">IFREECAN &copy; 2015</p>
 						<br/>
-						<p class="footer-company-name">Developed & Designed by <a href="#">Brighton Ngema</a>&copy; 2015</p>
+						<p class="footer-company-name">Developed & Designed by <a href="http://brightonngema.co.za" target="_blank">Brighton Ngema</a>&copy; 2015</p>
 					</div>
 
 					<div class="footer-center">

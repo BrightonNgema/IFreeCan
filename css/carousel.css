@@ -10,27 +10,12 @@ body {
 }
 .line_breaker{
   width:85%;
-  border:1px solid #888;
+  border:1px solid blue;
+  opacity:0.5;
 }
 
-.glyphicon-heart{
-  color:  #337ab7;
-  font-size:15px;
-  cursor: pointer;
-}
 
-.glyphicon-heart:hover{
-  color:  red;
-  font-size:15px;
-  cursor: pointer;
-}
 
-.red{
-  color:red;
-}
-.blue{
-  color: #337ab7;
-}
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
@@ -244,11 +229,12 @@ body {
 }
 section {
   /*background-color: #C2CCD6;*/
-  padding-top:20px;
-  /*background-image:url("../images/brown.g");*/
+  margin-top:30px;
+
 }
 .services{
-  padding-bottom: 30px;
+  margin-bottom: 30x;
+  /*background-image:url("../images/blue.jpg");*/
 }
 .service{
 

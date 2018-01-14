@@ -15,7 +15,7 @@ if(isset($_POST["category"])){
 			$cid = $row["cat_id"];
 			$cat_name = $row["cat_title"];
 			echo "
-					<li><a href='#' class='category' cid='$cid'>$cat_name</a></li>
+					<li><a href='store.php' class='category' cid='$cid'>$cat_name</a></li>
 			";
 		}
 		echo "</div>";
@@ -78,23 +78,30 @@ if(isset($_POST["getProduct"])){
 			$pro_price = $row['product_price'];
 			$pro_image = $row['product_image'];
 			echo "
-				<div class='col-md-4'>
-							<div class='products panel panel-info'>
+			<div class='col-md-4'>
+						<div class='products panel panel-info'>
 
-
-								<div class='panel-body text-center'>
-								<img src='product_images/$pro_image' style='width:100%; height:220px;'/>
-
-								</div>
-
-								<div class='product-title panel-heading'>$pro_title <span class=''style='float:right'>ID#$pro_id</span></div>
-
-								<div class='product-price panel-heading'>R $pro_price.00
+							<div class='panel-body text-center'>
+							<img src='product_images/$pro_image' style='width:100%; height:220px;'/>
+											</div>
+							<div class='product-title panel-heading'>$pro_title <span class=''style='float:right'> Id #$pro_id</span></div>
+							<div class='product-price panel-heading'>R $pro_price.00
+			";
+			if (isset($_SESSION["uid"])){
+				echo "
 									<span class='glyphicon glyphicon-heart' pid='$pro_id' style='float:right;' id='product'></span>
 								</div>
 							</div>
 						</div>
-			";
+				";
+			}else{
+				echo "
+									<!--<span class='glyphicon glyphicon-heart disabled' pid='$pro_id' style='float:right;' id='product' disabled></span>-->
+								</div>
+							</div>
+						</div>
+				";
+			}
 		}
 	}
 }
@@ -373,14 +380,14 @@ if(isset($_POST["get_display_product"])){
 			";
 			if (isset($_SESSION["uid"])){
 				echo "
-									<span class='glyphicon glyphicon-heart' pid='$pro_id' style='float:right;' id='product' class='btn btn-primary btn-xs'></span>
+									<span class='glyphicon glyphicon-heart' pid='$pro_id' style='float:right;' id='product'></span>
 								</div>
 							</div>
 						</div>
 				";
 			}else{
 				echo "
-									<span class='glyphicon glyphicon-heart' pid='$pro_id' style='float:right;' id='product' class='btn btn-primary btn-xs' disabled></span>
+									<!--<span class='glyphicon glyphicon-heart disabled' pid='$pro_id' style='float:right;' id='product' disabled></span>-->
 								</div>
 							</div>
 						</div>
